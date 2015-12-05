@@ -1,0 +1,6 @@
+framework module libpq {
+  umbrella header "libpq.h"
+
+  export *
+  module * { export * }
+}

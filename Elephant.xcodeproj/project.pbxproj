@@ -10,8 +10,8 @@
 		C0D4209F1C13769B00A9EF85 /* Elephant.h in Headers */ = {isa = PBXBuildFile; fileRef = C0D4209E1C13769B00A9EF85 /* Elephant.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C0D420A61C13769B00A9EF85 /* Elephant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0D4209B1C13769B00A9EF85 /* Elephant.framework */; };
 		C0D420AB1C13769B00A9EF85 /* ElephantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D420AA1C13769B00A9EF85 /* ElephantTests.swift */; };
-		C0D420B61C1376B500A9EF85 /* libpq.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0D420B51C1376B500A9EF85 /* libpq.framework */; };
 		C0D420B91C1377CC00A9EF85 /* Elephant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D420B81C1377CC00A9EF85 /* Elephant.swift */; };
+		C0D421001C13845000A9EF85 /* libpq.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0D420FF1C13845000A9EF85 /* libpq.framework */; };
 		D170C83602BFF353FC029ED5 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17E9AC86EF1FDB033AC8C828 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,8 +35,8 @@
 		C0D420A51C13769B00A9EF85 /* ElephantTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ElephantTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0D420AA1C13769B00A9EF85 /* ElephantTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElephantTests.swift; sourceTree = "<group>"; };
 		C0D420AC1C13769B00A9EF85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C0D420B51C1376B500A9EF85 /* libpq.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = libpq.framework; sourceTree = "<group>"; };
 		C0D420B81C1377CC00A9EF85 /* Elephant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Elephant.swift; sourceTree = "<group>"; };
+		C0D420FF1C13845000A9EF85 /* libpq.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = libpq.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,8 +44,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C0D420B61C1376B500A9EF85 /* libpq.framework in Frameworks */,
 				D170C83602BFF353FC029ED5 /* Pods.framework in Frameworks */,
+				C0D421001C13845000A9EF85 /* libpq.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,7 +111,7 @@
 		C0D420B71C1376BB00A9EF85 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C0D420B51C1376B500A9EF85 /* libpq.framework */,
+				C0D420FF1C13845000A9EF85 /* libpq.framework */,
 				17E9AC86EF1FDB033AC8C828 /* Pods.framework */,
 			);
 			name = Frameworks;
