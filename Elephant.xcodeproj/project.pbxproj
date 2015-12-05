@@ -11,7 +11,7 @@
 		C0D420A61C13769B00A9EF85 /* Elephant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0D4209B1C13769B00A9EF85 /* Elephant.framework */; };
 		C0D420AB1C13769B00A9EF85 /* ElephantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D420AA1C13769B00A9EF85 /* ElephantTests.swift */; };
 		C0D420B91C1377CC00A9EF85 /* Elephant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D420B81C1377CC00A9EF85 /* Elephant.swift */; };
-		C0D421001C13845000A9EF85 /* libpq.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0D420FF1C13845000A9EF85 /* libpq.framework */; };
+		C0D4210A1C138C5B00A9EF85 /* libpq.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0D421091C138C5B00A9EF85 /* libpq.framework */; };
 		D170C83602BFF353FC029ED5 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17E9AC86EF1FDB033AC8C828 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,7 +36,7 @@
 		C0D420AA1C13769B00A9EF85 /* ElephantTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElephantTests.swift; sourceTree = "<group>"; };
 		C0D420AC1C13769B00A9EF85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C0D420B81C1377CC00A9EF85 /* Elephant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Elephant.swift; sourceTree = "<group>"; };
-		C0D420FF1C13845000A9EF85 /* libpq.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = libpq.framework; sourceTree = "<group>"; };
+		C0D421091C138C5B00A9EF85 /* libpq.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = libpq.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,7 +45,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D170C83602BFF353FC029ED5 /* Pods.framework in Frameworks */,
-				C0D421001C13845000A9EF85 /* libpq.framework in Frameworks */,
+				C0D4210A1C138C5B00A9EF85 /* libpq.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,7 +111,7 @@
 		C0D420B71C1376BB00A9EF85 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C0D420FF1C13845000A9EF85 /* libpq.framework */,
+				C0D421091C138C5B00A9EF85 /* libpq.framework */,
 				17E9AC86EF1FDB033AC8C828 /* Pods.framework */,
 			);
 			name = Frameworks;
@@ -141,6 +141,7 @@
 				C0D420981C13769B00A9EF85 /* Headers */,
 				C0D420991C13769B00A9EF85 /* Resources */,
 				18009599958E89F3EDEA22EE /* Copy Pods Resources */,
+				C0D4210D1C138D9800A9EF85 /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -252,6 +253,20 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
+		};
+		C0D4210D1C138D9800A9EF85 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cp -r \"${PROJECT_DIR}/libpq.framework\" \"${BUILT_PRODUCTS_DIR}/libpq.framework\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -422,6 +437,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = ElephantTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stepanhruda.ElephantTests;
@@ -433,6 +452,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = ElephantTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stepanhruda.ElephantTests;
