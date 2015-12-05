@@ -36,14 +36,14 @@ enum QueryError: ErrorType {
 }
 
 public class Connection {
-    let pointer: COpaquePointer
+    let connectionPointer: COpaquePointer
 
     init(pointer: COpaquePointer) {
-        self.pointer = pointer
+        self.connectionPointer = pointer
     }
 
     func execute(query: Query) throws -> QueryResult {
-        let resultPointer = PQexec(pointer, query.string)
+        let resultPointer = PQexec(connectionPointer, query.string)
 
         let status = PQresultStatus(resultPointer)
 
@@ -52,7 +52,7 @@ public class Connection {
         default: throw QueryError.InvalidQuery
         }
 
-        return QueryResult(pointer: resultPointer)
+        return QueryResult(resultPointer: resultPointer)
     }
 }
 
@@ -81,10 +81,49 @@ public final class Query: StringLiteralConvertible {
 }
 
 struct QueryResult {
-    let pointer: COpaquePointer
+    let resultPointer: COpaquePointer
 
-    init(pointer: COpaquePointer) {
-        self.pointer = pointer
+    init(resultPointer: COpaquePointer) {
+        self.resultPointer = resultPointer
     }
+
+    lazy var rows: [ResultRow] = {
+        return QueryResult.cacheRowsForResult(self)
+    }()
+
+    static func cacheRowsForResult(result: QueryResult) -> [ResultRow] {
+        let numberOfColumns = PQnfields(result.resultPointer)
+        let numberOfRows = PQntuples(result.resultPointer)
+
+        var typesForColumns = [UInt32]()
+        typesForColumns.reserveCapacity(Int(numberOfColumns))
+
+        for columnNumber in 0..<numberOfColumns {
+            let typeId = PQftype(result.resultPointer, columnNumber)
+            typesForColumns[Int(columnNumber)] = typeId
+        }
+
+        for rowNumber in 0..<numberOfRows {
+            for columnNumber in 0..<numberOfColumns {
+                let value = PQgetvalue(result.resultPointer, rowNumber, columnNumber)
+            }
+        }
+
+        return []
+    }
+}
+
+struct ResultRow {
+    let columnValues: [ColumnValue]
+}
+
+enum ColumnValue {
+    case Boolean(Bool)
+    case Data([UInt8])
+// Unsupported until available in Swift Foundation
+//    case Date(NSDate)
+    case DoubleType(Double)
+    case Integer(Int)
+    case Text(String)
 }
 
