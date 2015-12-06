@@ -6,7 +6,7 @@ class ElephantTests: QuickSpec {
 
     override func spec() {
 
-        describe("Connection") {
+        describe("Database.connect") {
 
             context("with valid connection parameters") {
                 it("returns a connection") {
@@ -32,7 +32,7 @@ class ElephantTests: QuickSpec {
             }
         }
 
-        describe("Query") {
+        describe("Connection.execute") {
             let connection = try! Database.connect(ConnectionParameters())
 
             context("when executing a valid query") {

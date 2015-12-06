@@ -53,8 +53,14 @@ class Database {
     }
 }
 
-enum QueryError: ErrorType {
-    case InvalidQuery
+public enum QueryError: ErrorType {
+    case InvalidQuery(errorMessage: String)
+}
+
+// TODO: Implement on connection
+public enum ConnectionStatus {
+    case Connected
+    case Disconnected
 }
 
 public class Connection {
@@ -64,6 +70,10 @@ public class Connection {
         self.connectionPointer = pointer
     }
 
+    deinit {
+        PQfinish(connectionPointer)
+    }
+
     func execute(query: Query) throws -> QueryResult {
         let resultPointer = PQexec(connectionPointer, query.string)
 
@@ -71,7 +81,9 @@ public class Connection {
 
         switch status {
         case PGRES_COMMAND_OK, PGRES_TUPLES_OK: break
-        default: throw QueryError.InvalidQuery
+        default:
+            let message = String.fromCString(PQresultErrorMessage(resultPointer)) ?? ""
+            throw QueryError.InvalidQuery(errorMessage: message)
         }
 
         return QueryResult(resultPointer: resultPointer)
@@ -109,6 +121,10 @@ public final class QueryResult {
         self.resultPointer = resultPointer
     }
 
+    deinit {
+        PQclear(resultPointer)
+    }
+
     lazy var numberOfRows: Int32 = {
         return PQntuples(self.resultPointer)
     }()
@@ -117,36 +133,70 @@ public final class QueryResult {
         return PQnfields(self.resultPointer)
     }()
 
-    lazy var rows: [ResultRow] = {
-        var typesForColumns = [UInt32]()
+    lazy var typesForColumns: [ColumnType?] = {
+        var typesForColumns = [ColumnType?]()
         typesForColumns.reserveCapacity(Int(self.numberOfColumns))
 
         for columnNumber in 0..<self.numberOfColumns {
             let typeId = PQftype(self.resultPointer, columnNumber)
-            typesForColumns[Int(columnNumber)] = typeId
+            typesForColumns.append(ColumnType(rawValue: typeId))
         }
+
+        return typesForColumns
+    }()
+
+    lazy var rows: [ResultRow] = {
+        var rows = [ResultRow]()
+        rows.reserveCapacity(Int(self.numberOfRows))
 
         for rowNumber in 0..<self.numberOfRows {
+            var values = [ColumnValue]()
+            values.reserveCapacity(Int(self.numberOfColumns))
+
             for columnNumber in 0..<self.numberOfColumns {
-                let value = PQgetvalue(self.resultPointer, rowNumber, columnNumber)
+                let rawValue = PQgetvalue(self.resultPointer, rowNumber, columnNumber)
+
+                var value: ColumnValue
+                if let type = self.typesForColumns[Int(columnNumber)] {
+                    switch type {
+                    case .Boolean: value = .Boolean(nil)
+                    case .SingleFloat, .DoubleFloat: value = .DoubleType(nil)
+                    case .Int64, .Int16, .Int32: value = .Integer(nil)
+                    case .Text: value = .Text(nil)
+                    }
+                } else {
+                    value = .Data(nil)
+                }
+
+                values.append(value)
             }
+
+            rows.append(ResultRow(columnValues: values))
         }
 
-        return []
+        return rows
     }()
 }
 
-struct ResultRow {
+public struct ResultRow {
     let columnValues: [ColumnValue]
 }
 
-enum ColumnValue {
-    case Boolean(Bool)
-    case Data([UInt8])
-// Unsupported until available in Swift Foundation
-//    case Date(NSDate)
-    case DoubleType(Double)
-    case Integer(Int)
-    case Text(String)
+public enum ColumnValue {
+    case Boolean(Bool?)
+    case Data([UInt8]?)
+    case DoubleType(Double?)
+    case Integer(Int?)
+    case Text(String?)
+}
+
+enum ColumnType: UInt32 {
+    case Boolean = 16
+    case SingleFloat = 700
+    case DoubleFloat = 701
+    case Int64 = 20
+    case Int16 = 21
+    case Int32 = 23
+    case Text = 25
 }
 
