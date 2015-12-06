@@ -1,6 +1,12 @@
+#if os(Linux)
+ import Glibc
+#else
+ import Darwin
+#endif
+
 import libpq
 
-struct ConnectionParameters {
+public struct ConnectionParameters {
     let host: String
     let port: String
     let options: String
@@ -8,6 +14,22 @@ struct ConnectionParameters {
     let databaseName: String
     let login: String
     let password: String
+
+    public init(host: String = String.fromCString(getenv("POSTGRES_HOST")) ?? "",
+        port: String = String.fromCString(getenv("POSTGRES_PORT")) ?? "",
+        options: String = String.fromCString(getenv("POSTGRES_OPTIONS")) ?? "",
+        tty: String = String.fromCString(getenv("POSTGRES_TTY")) ?? "",
+        databaseName: String = String.fromCString(getenv("POSTGRES_DATABASE_NAME")) ?? "",
+        login: String = String.fromCString(getenv("POSTGRES_LOGIN")) ?? "",
+        password: String = String.fromCString(getenv("POSTGRES_PASSWORD")) ?? "") {
+            self.host = host
+            self.port = port
+            self.options = options
+            self.tty = tty
+            self.databaseName = databaseName
+            self.login = login
+            self.password = password
+    }
 }
 
 enum ConnectionError: ErrorType {
@@ -80,37 +102,38 @@ public final class Query: StringLiteralConvertible {
     }
 }
 
-struct QueryResult {
+public final class QueryResult {
     let resultPointer: COpaquePointer
 
     init(resultPointer: COpaquePointer) {
         self.resultPointer = resultPointer
     }
 
-    lazy var rows: [ResultRow] = {
-        return QueryResult.cacheRowsForResult(self)
+    lazy var numberOfRows: Int32 = {
+        return PQntuples(self.resultPointer)
     }()
 
-    static func cacheRowsForResult(result: QueryResult) -> [ResultRow] {
-        let numberOfColumns = PQnfields(result.resultPointer)
-        let numberOfRows = PQntuples(result.resultPointer)
+    lazy var numberOfColumns: Int32 = {
+        return PQnfields(self.resultPointer)
+    }()
 
+    lazy var rows: [ResultRow] = {
         var typesForColumns = [UInt32]()
-        typesForColumns.reserveCapacity(Int(numberOfColumns))
+        typesForColumns.reserveCapacity(Int(self.numberOfColumns))
 
-        for columnNumber in 0..<numberOfColumns {
-            let typeId = PQftype(result.resultPointer, columnNumber)
+        for columnNumber in 0..<self.numberOfColumns {
+            let typeId = PQftype(self.resultPointer, columnNumber)
             typesForColumns[Int(columnNumber)] = typeId
         }
 
-        for rowNumber in 0..<numberOfRows {
-            for columnNumber in 0..<numberOfColumns {
-                let value = PQgetvalue(result.resultPointer, rowNumber, columnNumber)
+        for rowNumber in 0..<self.numberOfRows {
+            for columnNumber in 0..<self.numberOfColumns {
+                let value = PQgetvalue(self.resultPointer, rowNumber, columnNumber)
             }
         }
 
         return []
-    }
+    }()
 }
 
 struct ResultRow {

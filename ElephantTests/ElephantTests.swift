@@ -6,22 +6,13 @@ class ElephantTests: QuickSpec {
 
     override func spec() {
 
-        let validDatabaseParameters = ConnectionParameters(
-            host: "192.168.99.100",
-            port: "32768",
-            options: "",
-            tty: "",
-            databaseName: "elephant",
-            login: "postgres",
-            password: "")
-
         describe("Connection") {
 
             context("with valid connection parameters") {
                 it("returns a connection") {
 
                     expect {
-                        try Database.connect(validDatabaseParameters)
+                        try Database.connect(ConnectionParameters())
                         return nil
                         }.toNot(throwError())
                 }
@@ -32,14 +23,7 @@ class ElephantTests: QuickSpec {
 
                     expect {
 
-                        let parameters = ConnectionParameters(
-                            host: "",
-                            port: "",
-                            options: "",
-                            tty: "",
-                            databaseName: "",
-                            login: "",
-                            password: "")
+                        let parameters = ConnectionParameters(host: "")
                         
                         try Database.connect(parameters)
                         return nil
@@ -49,7 +33,7 @@ class ElephantTests: QuickSpec {
         }
 
         describe("Query") {
-            let connection = try! Database.connect(validDatabaseParameters)
+            let connection = try! Database.connect(ConnectionParameters())
 
             context("when executing a valid query") {
                 it("doesn't throw an error") {
