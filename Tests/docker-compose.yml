@@ -1,0 +1,20 @@
+test:
+  build: .
+  command: make test
+  environment:
+    - PGHOST=data
+    - PGUSER=postgres
+    - PGPORT=5432
+    - PGPASSWORD=password
+    - DB_HOST=data
+    - DB_PASSWORD=password
+    - DB_NAME=postgres
+    - DB_PORT=5432
+    - CONTAINERIZED=true
+  links:
+    - data
+
+data:
+  image: postgres:9.4
+  environment:
+    - POSTGRES_PASSWORD=password
