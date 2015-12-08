@@ -46,7 +46,6 @@ for row in queryResult.rows {
 
 ### Roadmap
 
-* [ ] Swift Package Manager and Linux support (figure out how to import libpq)
 * [ ] Integration testing using Docker (run script without any setup necessary)
 * [ ] Consider necessity of asynchronous APIs, and whether to use libdispatch or use libpq's APIs
 * [ ] Add CI (Linux blocked by Quick, OS X + Docker on Travis)
