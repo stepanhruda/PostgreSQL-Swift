@@ -5,6 +5,7 @@ os:
 
 services:
   - docker
+  - postgresql
 
 script:
   - make test
