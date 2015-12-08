@@ -23,7 +23,7 @@ class DatabaseSpec: QuickSpec {
 
                     expect {
 
-                        let parameters = ConnectionParameters(host: "")
+                        let parameters = ConnectionParameters(host: "sillyhost", port: "666", databaseName: "forgetit", user: "nouser",  password: "forgetit")
 
                         try Database.connect(parameters: parameters)
                         return nil

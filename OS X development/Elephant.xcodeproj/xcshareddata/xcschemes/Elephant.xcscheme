@@ -70,28 +70,6 @@
             ReferencedContainer = "container:Elephant.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "POSTGRES_HOST"
-            value = "192.168.99.100"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-         <EnvironmentVariable
-            key = "POSTGRES_PORT"
-            value = "32768"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-         <EnvironmentVariable
-            key = "POSTGRES_DATABASE_NAME"
-            value = "elephant"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-         <EnvironmentVariable
-            key = "POSTGRES_LOGIN"
-            value = "postgres"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
