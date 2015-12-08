@@ -1,13 +1,17 @@
 test:
   build: .
-  command: make --file=Tests/Makefile test
+  command: make test
   environment:
     - PGHOST=data
     - PGUSER=postgres
     - PGPORT=5432
+    - PGPASSWORD=password
     - CONTAINERIZED=true
+    - DBNAME=elephant
   links:
     - data
 
 data:
   image: postgres:9.4
+  environment:
+    - POSTGRES_PASSWORD=password

@@ -14,23 +14,20 @@ test: ## Run the unit tests in a Docker container against a Docker based databas
 	@docker-compose build test
 	@docker-compose run test
 else
-test: lint db.migrate db.seed ## (with "CONTAINERIZED=true") Run the unit tests directly via go
-	godep 	go test $(LDFLAGS) -cover ./...
+test: lint db.migrate db.seed ## (with "CONTAINERIZED=true") Run the unit tests directly
+	swift build
 endif
 
 db.migrate: ## Migrate the database
 	$(info migrating the database)
+	sleep 5 ## give time for postgres to start up
 	psql $(DB_NAME) < db/migrate.sql
 
 db.seed: ## Seed 		the database
 	$(info seeding the database)
-	PGPASSWORD=$(DB_PASSWORD) psql -h $(DB_HOST) -p $(DB_PORT) -U $(DB_USER) $(DB_NAME) < db/seed.sql
-
-db.schema: ## Dump the database schema
-	PGPASSWORD=$(DB_PASSWORD) pg_dump -s -x -h $(DB_HOSTOST) -p $(DB_PORT) -U $(DB_USER) $(DB_NAME)
+	psql $(DB_NAME) < db/seed.sql
 
 db.enter_console:
-	PGPASSWORDWORD=$(DB_PASSWORD) psql -h $(DB_HOST) -p $(DB_PORT) -U $(DB_USER) $(DB_NAME)
+	psql $(DB_NAME)
 
 lint:
-
