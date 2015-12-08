@@ -11,4 +11,3 @@ test:
 
 data:
   image: postgres:9.4
-  environment:
