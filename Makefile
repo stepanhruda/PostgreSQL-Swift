@@ -6,7 +6,10 @@ default: help
 help: ## Show this help
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrepep | sed -Ee 's/([a-z.]*):[^#]*##(.*)/\1##\2/' | sort | column -t -s "##"
 
-ifndef CONTAINERIZED
+ifeq ($(TRAVIS_OS_NAME),osx)
+test:
+	swift build
+else ifndef CONTAINERIZED
 test: ## Run the unit tests in a Docker container against a Docker based database
 	$(info running unit test containertainers)
 	@docker-compose stop data &> /dev/null
