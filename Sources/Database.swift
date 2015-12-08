@@ -10,9 +10,9 @@ public class Database {
         let connectionPointer = PQsetdbLogin(parameters.host,
             parameters.port,
             parameters.options,
-            parameters.tty,
+            "",
             parameters.databaseName,
-            parameters.login,
+            parameters.user,
             parameters.password)
 
         guard PQstatus(connectionPointer) == CONNECTION_OK else { throw ConnectionError.ConnectionFailed }

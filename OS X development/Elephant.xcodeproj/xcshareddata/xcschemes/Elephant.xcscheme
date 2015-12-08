@@ -72,22 +72,22 @@
       </MacroExpansion>
       <EnvironmentVariables>
          <EnvironmentVariable
-            key = "POSTGRES_HOST"
+            key = "PGHOST"
             value = "192.168.99.100"
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
-            key = "POSTGRES_PORT"
+            key = "PGPORT"
             value = "32768"
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
-            key = "POSTGRES_DATABASE_NAME"
+            key = "PGDATABASE"
             value = "elephant"
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
-            key = "POSTGRES_LOGIN"
+            key = "PGLOGIN"
             value = "postgres"
             isEnabled = "YES">
          </EnvironmentVariable>

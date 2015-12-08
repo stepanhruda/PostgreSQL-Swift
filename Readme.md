@@ -23,14 +23,14 @@ Your database configuration should not be in your application's source. Connecti
 let connection = try Database.connect()
 ```
 
-Configuration is automatically loaded from environment variables.
+Configuration is automatically loaded from default PostgreSQL environment variables.
 
 ```shell
-export POSTGRES_HOST 123.123.123.123
-export POSTGRES_PORT 9000
-export POSTGRES_DATABASE_NAME banana_pantry
-export POSTGRES_LOGIN mehungry
-export POSTGRES_PASSWORD reallyhungrygotnopatience
+export PGHOST 123.123.123.123
+export PGPORT 9000
+export PGDATABASE banana_pantry
+export PGUSER mehungry
+export PGPASSWORD reallyhungrygotnopatience
 ```
 
 #### Queries and results
