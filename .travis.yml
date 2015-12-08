@@ -3,9 +3,14 @@ os:
   - linux
   - osx
 
+osx_image: xcode7.1
+
 services:
   - docker
   - postgresql
 
 script:
   - make test
+
+env:
+  - PGHOST=localhost PGUSER=travis PGPORT=5432 DBNAME=elephant
