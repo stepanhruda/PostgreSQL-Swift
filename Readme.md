@@ -46,8 +46,7 @@ for row in queryResult.rows {
 
 ### Roadmap
 
-* [ ] Integration testing using Docker (run script without any setup necessary)
+* [ ] Integration testing using Docker (run OS X script on OS X, Linux script on Linux)
 * [ ] Consider necessity of asynchronous APIs, and whether to use libdispatch or use libpq's APIs
-* [ ] Add CI (Linux blocked by Quick, OS X + Docker on Travis)
-* [ ] Shadow all libpq APIs (multiple tasks here)
+* [ ] Shadow all desired libpq APIs (multiple tasks here)
 * [ ] Look into using Swift Foundation to support column types outside of Swift stdlib (date etc.)
