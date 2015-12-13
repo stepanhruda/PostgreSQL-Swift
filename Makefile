@@ -7,9 +7,10 @@ default: help
 help: ## Show this help
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrepep | sed -Ee 's/([a-z.]*):[^#]*##(.*)/\1##\2/' | sort | column -t -s "##"
 
-ifeq ($(UNAME),Darwin)
-test: development.setup lint
-	cd "OS X development" && xctool -workspace Elephant.xcworkspace -scheme Elephant test
+ifeq ($(TRAVIS_OS_NAME),osx)
+test: dependencies.travis lint db.migrate db.seed development.test
+else ifeq ($(UNAME),Darwin)
+test: development.setup lint development.test
 else ifndef CONTAINERIZED
 test: development.setup ## Run the unit tests in a Docker container against a Docker based database
 	$(info running unit test containertainers)
@@ -34,8 +35,17 @@ db.enter_console:
 
 lint:
 
+dependencies.travis:
+	pg_ctl -D /usr/local/var/postgres start &> /dev/null
+	sleep 5 ## give time for postgres to start up
+	initdb -D /usr/local/pgsql/data &> /dev/null
+	psql -d postgres -c 'create database travis' &> /dev/null
+
 development.setup:
 	@docker-compose stop postgres &> /dev/null
 	@docker-compose rm -v --force postgres test &> /dev/null
 	@docker-compose up -d postgres
 	@docker-compose run migrate
+
+development.test:
+	cd "OS X development" && xctool -workspace Elephant.xcworkspace -scheme Elephant test
