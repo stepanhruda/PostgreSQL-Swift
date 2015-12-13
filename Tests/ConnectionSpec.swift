@@ -7,10 +7,26 @@ class ConnectionSpec: QuickSpec {
     override func spec() {
 
         describe("execute") {
-            let connection = try! Database.connect()
+            var connection: Connection!
+            var connectionErrorMessage: String?
+
+            beforeEach {
+                connectionErrorMessage = nil
+
+                do {
+                    connection = try Database.connect()
+                } catch let error as ConnectionError {
+                    switch error {
+                    case .ConnectionFailed(message: let message):
+                        connectionErrorMessage = message
+                    }
+                } catch { connectionErrorMessage = "Unknown error" }
+            }
 
             context("when executing a valid query") {
                 it("doesn't throw an error") {
+                    guard connectionErrorMessage == nil else { fail(connectionErrorMessage!); return }
+
                     expect {
                         try connection.execute("SELECT 1;")
                         return nil
@@ -20,6 +36,8 @@ class ConnectionSpec: QuickSpec {
 
             context("when executing an invalid query") {
                 it("throws an invalid query error") {
+                    guard connectionErrorMessage == nil else { fail(connectionErrorMessage!); return }
+
                     expect {
                         try connection.execute("OH MY GOD;")
                         return nil

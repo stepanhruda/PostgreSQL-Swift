@@ -1,7 +1,7 @@
 import libpq
 
 public enum ConnectionError: ErrorType {
-    case ConnectionFailed
+    case ConnectionFailed(message: String)
 }
 
 public class Database {
@@ -15,7 +15,10 @@ public class Database {
             parameters.user,
             parameters.password)
 
-        guard PQstatus(connectionPointer) == CONNECTION_OK else { throw ConnectionError.ConnectionFailed }
+        guard PQstatus(connectionPointer) == CONNECTION_OK else {
+            let message = String.fromCString(PQerrorMessage(connectionPointer))
+            throw ConnectionError.ConnectionFailed(message: message ?? "Unknown error")
+        }
 
         return Connection(pointer: connectionPointer)
     }
