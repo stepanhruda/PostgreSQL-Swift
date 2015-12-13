@@ -1,4 +1,5 @@
 TARGET=elephant
+UNAME := $(shell uname)
 .PHONY: test db.migrate db.seed db.schema
 
 default: help
@@ -6,7 +7,7 @@ default: help
 help: ## Show this help
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrepep | sed -Ee 's/([a-z.]*):[^#]*##(.*)/\1##\2/' | sort | column -t -s "##"
 
-ifeq ($(TRAVIS_OS_NAME),osx)
+ifeq ($(UNAME),Darwin)
 test: development.setup lint
 	cd "OS X development" && xctool -workspace Elephant.xcworkspace -scheme Elephant test
 else ifndef CONTAINERIZED
@@ -34,5 +35,7 @@ db.enter_console:
 lint:
 
 development.setup:
-	@docker-compose up postgres
+	@docker-compose stop postgres &> /dev/null
+	@docker-compose rm -v --force postgres test &> /dev/null
+	@docker-compose up -d postgres
 	@docker-compose run migrate
