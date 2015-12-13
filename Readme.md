@@ -46,7 +46,4 @@ for row in queryResult.rows {
 
 ### Roadmap
 
-* [ ] Integration testing using Docker (run OS X script on OS X, Linux script on Linux)
-* [ ] Consider necessity of asynchronous APIs, and whether to use libdispatch or use libpq's APIs
-* [ ] Shadow all desired libpq APIs (multiple tasks here)
-* [ ] Look into using Swift Foundation to support column types outside of Swift stdlib (date etc.)
+[We are tracking our roadmap with a GitHub issue](https://github.com/stepanhruda/Elephant/issues/5)
