@@ -42,6 +42,7 @@ dependencies.travis:
 	psql -d postgres -c 'create database travis' &> /dev/null
 
 development.setup:
+	@git apply docker-environment-variables.patch
 	@docker-compose stop postgres &> /dev/null
 	@docker-compose rm -v --force postgres test &> /dev/null
 	@docker-compose up -d postgres
