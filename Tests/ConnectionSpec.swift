@@ -44,6 +44,20 @@ class ConnectionSpec: QuickSpec {
                         }.to(throwError(errorType: QueryError.self))
                 }
             }
+
+            it("selects a boolean") {
+                guard connectionErrorMessage == nil else { fail(connectionErrorMessage!); return }
+
+                let result = try! connection.execute("SELECT true;")
+                expect(result.rows[0].columnValues[0] as? Bool) == true
+            }
+
+            it("selects a 32-bit integer") {
+                guard connectionErrorMessage == nil else { fail(connectionErrorMessage!); return }
+
+                let result = try! connection.execute("SELECT 42;")
+                expect(result.rows[0].columnValues[0] as? Int32) == 42
+            }
         }
     }
 }

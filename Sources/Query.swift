@@ -20,8 +20,17 @@ public final class Query: StringLiteralConvertible {
     public convenience init(extendedGraphemeClusterLiteral value: String) {
         self.init(string: value)
     }
+
+    var resultFormat: QueryResultDataFormat {
+        return .Binary
+    }
 }
 
 public enum QueryError: ErrorType {
     case InvalidQuery(errorMessage: String)
+}
+
+enum QueryResultDataFormat: Int32 {
+    case Text
+    case Binary
 }

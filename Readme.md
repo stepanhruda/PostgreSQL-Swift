@@ -36,11 +36,12 @@ export PGPASSWORD reallyhungrygotnopatience
 #### Queries and results
 
 ```swift
-let queryResult = try connection.execute("SELECT color, texture, taste FROM bananas")
-for row in queryResult.rows {
-    for value in row.columnValues {
-        // Called for color, texture and taste in every row
-    }
+let result = try connection.execute("SELECT color, is_tasty, length FROM bananas")
+for row in result.rows {
+  let color = row["color"] as! String
+  let isTasty = row["is_tasty"] as! Bool
+  let length = row["length"] as! Int
+  let banana = Banana(color: color, isTasty: isTasty, length: length)
 }
 ```
 
