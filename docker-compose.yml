@@ -2,16 +2,27 @@ test:
   build: .
   command: make test
   environment:
-    - PGHOST=data
+    - PGHOST=postgres
     - PGUSER=postgres
     - PGPORT=5432
-    - PGPASSWORD=password
     - CONTAINERIZED=true
-    - DBNAME=elephant
+    - PGDATABASE=elephant
   links:
-    - data
+    - postgres
 
-data:
+postgres:
   image: postgres:9.4
+  ports:
+    - 32768:5432
+
+migrate:
+  build: .
+  command: make db.migrate
   environment:
-    - POSTGRES_PASSWORD=password
+    - PGHOST=postgres
+    - PGUSER=postgres
+    - PGPORT=5432
+    - CONTAINERIZED=true
+    - PGDATABASE=postgres
+  links:
+    - postgres

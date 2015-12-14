@@ -44,6 +44,17 @@ for row in queryResult.rows {
 }
 ```
 
+### Development
+
+#### Setup
+1. Install dependencies
+  1. Xcode 7+
+  1. `brew cask install dockertoolbox`
+1. initialize postgres docker container
+  1. `make development.setup`
+1. Run tests
+  1. `make test`
+
 ### Roadmap
 
 [We are tracking our roadmap with a GitHub issue](https://github.com/stepanhruda/Elephant/issues/5)
