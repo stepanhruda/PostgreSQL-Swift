@@ -73,18 +73,22 @@ public final class QueryResult {
         guard let type = self.typesForColumnIndexes[Int(columnIndex)] else {
             let length = Int(PQgetlength(self.resultPointer, rowIndex, columnIndex))
             // Unsupported column types are returned as [UInt8]
-            return byteArrayForPointer(startingPointer, length: length)
+            return byteArrayForPointer(UnsafePointer<UInt8>(startingPointer), length: length)
         }
 
         switch type {
         case .Boolean: return UnsafePointer<Bool>(startingPointer).memory
-        case .Int16: return swapInt16Bytes(UnsafePointer<Int16>(startingPointer).memory)
-        case .Int32: return swapInt32Bytes(UnsafePointer<Int32>(startingPointer).memory)
-        case .Int64: return swapInt64Bytes(UnsafePointer<Int64>(startingPointer).memory)
-        case .SingleFloat: return swapFloatBytes(UnsafePointer<Int32>(startingPointer).memory)
-        case .DoubleFloat: return swapDoubleBytes(UnsafePointer<Int64>(startingPointer).memory)
+        case .Int16: return Int16(bigEndian: UnsafePointer<Int16>(startingPointer).memory)
+        case .Int32: return Int32(bigEndian: UnsafePointer<Int32>(startingPointer).memory)
+        case .Int64: return Int64(bigEndian: UnsafePointer<Int64>(startingPointer).memory)
+        case .SingleFloat: return floatFromInt32(Int32(bigEndian: UnsafePointer<Int32>(startingPointer).memory))
+        case .DoubleFloat: return doubleFromInt64(Int64(bigEndian: UnsafePointer<Int64>(startingPointer).memory))
         case .Text: return String.fromCString(startingPointer)!
         }
+    }
+
+    private func byteArrayForPointer(start: UnsafePointer<UInt8>, length: Int) -> [UInt8] {
+        return Array(UnsafeBufferPointer(start: start, count: length))
     }
 }
 
