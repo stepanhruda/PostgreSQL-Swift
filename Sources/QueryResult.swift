@@ -1,9 +1,4 @@
 import libpq
-#if os(Linux)
-    import Glibc
-#else
-    import Darwin
-#endif
 
 /// Results are readonly operations and therefore threadsafe.
 public final class QueryResult {
@@ -48,8 +43,8 @@ public final class QueryResult {
         return typesForColumns
     }()
 
-    public lazy var rows: [ResultRow] = {
-        var rows = [ResultRow]()
+    public lazy var rows: [QueryResultRow] = {
+        var rows = [QueryResultRow]()
         rows.reserveCapacity(Int(self.numberOfRows))
 
         for rowIndex in 0..<self.numberOfRows {
@@ -59,7 +54,7 @@ public final class QueryResult {
         return rows
     }()
 
-    private func readResultRowAtIndex(rowIndex: Int32) -> ResultRow {
+    private func readResultRowAtIndex(rowIndex: Int32) -> QueryResultRow {
         var values = [Any?]()
         values.reserveCapacity(Int(self.numberOfColumns))
 
@@ -67,53 +62,28 @@ public final class QueryResult {
             values.append(readColumnValueAtIndex(columnIndex, rowIndex: rowIndex))
         }
 
-        return ResultRow(columnValues: values, queryResult: self)
+        return QueryResultRow(columnValues: values, queryResult: self)
     }
 
     private func readColumnValueAtIndex(columnIndex: Int32, rowIndex: Int32) -> Any? {
         guard PQgetisnull(self.resultPointer, rowIndex, columnIndex) == 0 else { return nil }
 
-        let firstBytePointer = PQgetvalue(self.resultPointer, rowIndex, columnIndex)
+        let startingPointer = PQgetvalue(self.resultPointer, rowIndex, columnIndex)
 
         guard let type = self.typesForColumnIndexes[Int(columnIndex)] else {
             let length = Int(PQgetlength(self.resultPointer, rowIndex, columnIndex))
-            return readBytesStartingAtPointer(firstBytePointer, length: length)
+            // Unsupported column types are returned as [UInt8]
+            return byteArrayForPointer(startingPointer, length: length)
         }
 
         switch type {
-        case .Boolean: return UnsafeMutablePointer<Bool>(firstBytePointer).memory
-        case .Int16: return swapInt16Bytes(UnsafeMutablePointer<Int16>(firstBytePointer).memory)
-        case .Int32: return swapInt32Bytes(UnsafeMutablePointer<Int32>(firstBytePointer).memory)
-        case .Int64: return swapInt64Bytes(UnsafeMutablePointer<Int64>(firstBytePointer).memory)
-//        case .SingleFloat: return parseDouble()
-//            case .DoubleFloat: return parseDouble(bytes)
-        case .Text: return String.fromCString(firstBytePointer)!
-            default: return nil
-        }
-    }
-
-    private func readBytesStartingAtPointer(pointer: UnsafeMutablePointer<Int8>, length: Int) -> [Int8] {
-        var pointer = pointer
-        var bytes: [Int8] = []
-        bytes.reserveCapacity(length)
-
-        for _ in 0..<length {
-            bytes.append(pointer.memory)
-            pointer = pointer.advancedBy(1)
-        }
-
-        return bytes
-    }
-}
-
-public struct ResultRow {
-    public let columnValues: [Any?]
-    unowned let queryResult: QueryResult
-
-    subscript(columnName: String) -> Any? {
-        get {
-            guard let index = queryResult.columnIndexesForNames[columnName] else { return nil }
-            return columnValues[index]
+        case .Boolean: return UnsafePointer<Bool>(startingPointer).memory
+        case .Int16: return swapInt16Bytes(UnsafePointer<Int16>(startingPointer).memory)
+        case .Int32: return swapInt32Bytes(UnsafePointer<Int32>(startingPointer).memory)
+        case .Int64: return swapInt64Bytes(UnsafePointer<Int64>(startingPointer).memory)
+        case .SingleFloat: return swapFloatBytes(UnsafePointer<Int32>(startingPointer).memory)
+        case .DoubleFloat: return swapDoubleBytes(UnsafePointer<Int64>(startingPointer).memory)
+        case .Text: return String.fromCString(startingPointer)!
         }
     }
 }
@@ -127,29 +97,3 @@ enum ColumnType: UInt32 {
     case SingleFloat = 700
     case DoubleFloat = 701
 }
-
-private func swapInt16Bytes(input: Int16) -> Int16 {
-#if os(Linux)
-    return Int16(htons(__uint16_t(input)))
-#else
-    return Int16(_OSSwapInt16(__uint16_t(input)))
-#endif
-}
-
-private func swapInt32Bytes(input: Int32) -> Int32 {
-#if os(Linux)
-    return Int32(htonl(__uint32_t(input)))
-#else
-    return Int32(_OSSwapInt32(__uint32_t(input)))
-#endif
-}
-
-private func swapInt64Bytes(input: Int64) -> Int64 {
-#if os(Linux)
-    return Int64(htobe64(__uint64_t(input)))
-#else
-    return Int64(_OSSwapInt64(__uint64_t(input)))
-#endif
-}
-
-

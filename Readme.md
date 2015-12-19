@@ -45,17 +45,13 @@ for row in result.rows {
 }
 ```
 
-### Development
+### Development on OS X
 
-#### Setup
 1. Install dependencies
-  1. Xcode 7+
-  1. `brew cask install dockertoolbox`
-1. initialize postgres docker container
-  1. `make development.setup`
-1. Run tests
-  1. `make test`
+  * Xcode 7+ (Swift 2.x)
+  * `brew cask install dockertoolbox`
+1. `make development.setup`
+  * Starts a PostgreSQL container that tests can be run against. Before running make sure your docker-machine environment variables are available (usually you run `eval $(docker-machine env default)`)
+  * `development.setup` also adds handy opinionated environment variables in your Xcode scheme that connect to the container. If you are using a custom setup rather than what docker-machine gives you out of the box, you might need to tweak them. Also, please don't commit any changes to the `.xcscheme` file.
+1. `make test` to run tests or run them through Xcode
 
-### Roadmap
-
-[We are tracking our roadmap with a GitHub issue](https://github.com/stepanhruda/Elephant/issues/5)

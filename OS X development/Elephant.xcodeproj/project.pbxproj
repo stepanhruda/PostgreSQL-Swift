@@ -7,16 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C05EFC4F1C167F4C00B27E57 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05EFC4A1C167F4C00B27E57 /* Connection.swift */; };
-		C05EFC501C167F4C00B27E57 /* ConnectionParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05EFC4B1C167F4C00B27E57 /* ConnectionParameters.swift */; };
-		C05EFC511C167F4C00B27E57 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05EFC4C1C167F4C00B27E57 /* Database.swift */; };
-		C05EFC521C167F4C00B27E57 /* Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05EFC4D1C167F4C00B27E57 /* Query.swift */; };
-		C05EFC531C167F4C00B27E57 /* QueryResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05EFC4E1C167F4C00B27E57 /* QueryResult.swift */; };
-		C0D4209F1C13769B00A9EF85 /* Elephant.h in Headers */ = {isa = PBXBuildFile; fileRef = C0D4209E1C13769B00A9EF85 /* Elephant.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C0D420A61C13769B00A9EF85 /* Elephant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0D4209B1C13769B00A9EF85 /* Elephant.framework */; };
 		C0D4210A1C138C5B00A9EF85 /* libpq.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0D421091C138C5B00A9EF85 /* libpq.framework */; };
-		C0D421201C1491D900A9EF85 /* ConnectionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D4211E1C1491D900A9EF85 /* ConnectionSpec.swift */; };
-		C0D421211C1491D900A9EF85 /* DatabaseSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D4211F1C1491D900A9EF85 /* DatabaseSpec.swift */; };
+		C0F648971C25F49900A7ABDE /* Byteswap.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F648901C25F49900A7ABDE /* Byteswap.swift */; };
+		C0F648981C25F49900A7ABDE /* Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F648911C25F49900A7ABDE /* Query.swift */; };
+		C0F648991C25F49900A7ABDE /* QueryResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F648921C25F49900A7ABDE /* QueryResult.swift */; };
+		C0F6489A1C25F49900A7ABDE /* QueryResultRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F648931C25F49900A7ABDE /* QueryResultRow.swift */; };
+		C0F6489B1C25F49900A7ABDE /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F648941C25F49900A7ABDE /* Connection.swift */; };
+		C0F6489C1C25F49900A7ABDE /* ConnectionParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F648951C25F49900A7ABDE /* ConnectionParameters.swift */; };
+		C0F6489D1C25F49900A7ABDE /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F648961C25F49900A7ABDE /* Database.swift */; };
+		C0F648AD1C25F52500A7ABDE /* Elephant.h in Headers */ = {isa = PBXBuildFile; fileRef = C0F648AA1C25F52500A7ABDE /* Elephant.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C0F648AF1C25F57700A7ABDE /* ConnectionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F648A21C25F4FF00A7ABDE /* ConnectionSpec.swift */; };
+		C0F648B01C25F57700A7ABDE /* QueryResultSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F648A31C25F4FF00A7ABDE /* QueryResultSpec.swift */; };
+		C0F648B11C25F57700A7ABDE /* DatabaseSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F648A41C25F4FF00A7ABDE /* DatabaseSpec.swift */; };
 		D170C83602BFF353FC029ED5 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17E9AC86EF1FDB033AC8C828 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,19 +37,22 @@
 		17E9AC86EF1FDB033AC8C828 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		707CBAEE41A9F264E256E4CA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		AD1168C2B49409CAE9F17829 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		C05EFC4A1C167F4C00B27E57 /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Connection.swift; path = ../../Sources/Connection.swift; sourceTree = "<group>"; };
-		C05EFC4B1C167F4C00B27E57 /* ConnectionParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConnectionParameters.swift; path = ../../Sources/ConnectionParameters.swift; sourceTree = "<group>"; };
-		C05EFC4C1C167F4C00B27E57 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Database.swift; path = ../../Sources/Database.swift; sourceTree = "<group>"; };
-		C05EFC4D1C167F4C00B27E57 /* Query.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Query.swift; path = ../../Sources/Query.swift; sourceTree = "<group>"; };
-		C05EFC4E1C167F4C00B27E57 /* QueryResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QueryResult.swift; path = ../../Sources/QueryResult.swift; sourceTree = "<group>"; };
 		C0D4209B1C13769B00A9EF85 /* Elephant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Elephant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C0D4209E1C13769B00A9EF85 /* Elephant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Elephant.h; sourceTree = "<group>"; };
-		C0D420A01C13769B00A9EF85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C0D420A51C13769B00A9EF85 /* ElephantTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ElephantTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C0D420AC1C13769B00A9EF85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C0D421091C138C5B00A9EF85 /* libpq.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = libpq.framework; sourceTree = "<group>"; };
-		C0D4211E1C1491D900A9EF85 /* ConnectionSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConnectionSpec.swift; path = ../../Tests/ConnectionSpec.swift; sourceTree = "<group>"; };
-		C0D4211F1C1491D900A9EF85 /* DatabaseSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DatabaseSpec.swift; path = ../../Tests/DatabaseSpec.swift; sourceTree = "<group>"; };
+		C0F648901C25F49900A7ABDE /* Byteswap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Byteswap.swift; sourceTree = "<group>"; };
+		C0F648911C25F49900A7ABDE /* Query.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Query.swift; sourceTree = "<group>"; };
+		C0F648921C25F49900A7ABDE /* QueryResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryResult.swift; sourceTree = "<group>"; };
+		C0F648931C25F49900A7ABDE /* QueryResultRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryResultRow.swift; sourceTree = "<group>"; };
+		C0F648941C25F49900A7ABDE /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
+		C0F648951C25F49900A7ABDE /* ConnectionParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionParameters.swift; sourceTree = "<group>"; };
+		C0F648961C25F49900A7ABDE /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		C0F648A21C25F4FF00A7ABDE /* ConnectionSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionSpec.swift; sourceTree = "<group>"; };
+		C0F648A31C25F4FF00A7ABDE /* QueryResultSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryResultSpec.swift; sourceTree = "<group>"; };
+		C0F648A41C25F4FF00A7ABDE /* DatabaseSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseSpec.swift; sourceTree = "<group>"; };
+		C0F648A91C25F52500A7ABDE /* Elephant Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Elephant Info.plist"; sourceTree = "<group>"; };
+		C0F648AA1C25F52500A7ABDE /* Elephant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Elephant.h; sourceTree = "<group>"; };
+		C0F648AB1C25F52500A7ABDE /* ElephantTests Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ElephantTests Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,8 +88,9 @@
 		C0D420911C13769B00A9EF85 = {
 			isa = PBXGroup;
 			children = (
-				C0D4209D1C13769B00A9EF85 /* Elephant */,
-				C0D420A91C13769B00A9EF85 /* ElephantTests */,
+				C0D4209D1C13769B00A9EF85 /* Sources */,
+				C0D420A91C13769B00A9EF85 /* Tests */,
+				C0F648A81C25F52500A7ABDE /* Supporting Files */,
 				C0D4209C1C13769B00A9EF85 /* Products */,
 				C0D420B71C1376BB00A9EF85 /* Frameworks */,
 				31A77408FDD2AEB75B25A367 /* Pods */,
@@ -99,28 +106,30 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C0D4209D1C13769B00A9EF85 /* Elephant */ = {
+		C0D4209D1C13769B00A9EF85 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				C05EFC4A1C167F4C00B27E57 /* Connection.swift */,
-				C05EFC4B1C167F4C00B27E57 /* ConnectionParameters.swift */,
-				C05EFC4C1C167F4C00B27E57 /* Database.swift */,
-				C05EFC4D1C167F4C00B27E57 /* Query.swift */,
-				C05EFC4E1C167F4C00B27E57 /* QueryResult.swift */,
-				C0D4209E1C13769B00A9EF85 /* Elephant.h */,
-				C0D420A01C13769B00A9EF85 /* Info.plist */,
+				C0F648901C25F49900A7ABDE /* Byteswap.swift */,
+				C0F648941C25F49900A7ABDE /* Connection.swift */,
+				C0F648951C25F49900A7ABDE /* ConnectionParameters.swift */,
+				C0F648961C25F49900A7ABDE /* Database.swift */,
+				C0F648911C25F49900A7ABDE /* Query.swift */,
+				C0F648921C25F49900A7ABDE /* QueryResult.swift */,
+				C0F648931C25F49900A7ABDE /* QueryResultRow.swift */,
 			);
-			path = Elephant;
+			name = Sources;
+			path = ../Sources;
 			sourceTree = "<group>";
 		};
-		C0D420A91C13769B00A9EF85 /* ElephantTests */ = {
+		C0D420A91C13769B00A9EF85 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				C0D4211E1C1491D900A9EF85 /* ConnectionSpec.swift */,
-				C0D4211F1C1491D900A9EF85 /* DatabaseSpec.swift */,
-				C0D420AC1C13769B00A9EF85 /* Info.plist */,
+				C0F648A21C25F4FF00A7ABDE /* ConnectionSpec.swift */,
+				C0F648A31C25F4FF00A7ABDE /* QueryResultSpec.swift */,
+				C0F648A41C25F4FF00A7ABDE /* DatabaseSpec.swift */,
 			);
-			path = ElephantTests;
+			name = Tests;
+			path = ../Tests;
 			sourceTree = "<group>";
 		};
 		C0D420B71C1376BB00A9EF85 /* Frameworks */ = {
@@ -132,6 +141,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C0F648A81C25F52500A7ABDE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C0F648A91C25F52500A7ABDE /* Elephant Info.plist */,
+				C0F648AA1C25F52500A7ABDE /* Elephant.h */,
+				C0F648AB1C25F52500A7ABDE /* ElephantTests Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -139,7 +158,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C0D4209F1C13769B00A9EF85 /* Elephant.h in Headers */,
+				C0F648AD1C25F52500A7ABDE /* Elephant.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,7 +210,7 @@
 		C0D420921C13769B00A9EF85 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0710;
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Stepan Hruda";
 				TargetAttributes = {
@@ -290,11 +309,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C05EFC531C167F4C00B27E57 /* QueryResult.swift in Sources */,
-				C05EFC521C167F4C00B27E57 /* Query.swift in Sources */,
-				C05EFC511C167F4C00B27E57 /* Database.swift in Sources */,
-				C05EFC4F1C167F4C00B27E57 /* Connection.swift in Sources */,
-				C05EFC501C167F4C00B27E57 /* ConnectionParameters.swift in Sources */,
+				C0F6489A1C25F49900A7ABDE /* QueryResultRow.swift in Sources */,
+				C0F6489C1C25F49900A7ABDE /* ConnectionParameters.swift in Sources */,
+				C0F648991C25F49900A7ABDE /* QueryResult.swift in Sources */,
+				C0F6489B1C25F49900A7ABDE /* Connection.swift in Sources */,
+				C0F648981C25F49900A7ABDE /* Query.swift in Sources */,
+				C0F6489D1C25F49900A7ABDE /* Database.swift in Sources */,
+				C0F648971C25F49900A7ABDE /* Byteswap.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,8 +323,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C0D421201C1491D900A9EF85 /* ConnectionSpec.swift in Sources */,
-				C0D421211C1491D900A9EF85 /* DatabaseSpec.swift in Sources */,
+				C0F648B11C25F57700A7ABDE /* DatabaseSpec.swift in Sources */,
+				C0F648B01C25F57700A7ABDE /* QueryResultSpec.swift in Sources */,
+				C0F648AF1C25F57700A7ABDE /* ConnectionSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,12 +436,8 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-				);
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = Elephant/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Elephant Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
@@ -440,12 +458,8 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-				);
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = Elephant/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Elephant Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
@@ -460,11 +474,7 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-				);
-				INFOPLIST_FILE = ElephantTests/Info.plist;
+				INFOPLIST_FILE = "Supporting Files/ElephantTests Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stepanhruda.ElephantTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -477,11 +487,7 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-				);
-				INFOPLIST_FILE = ElephantTests/Info.plist;
+				INFOPLIST_FILE = "Supporting Files/ElephantTests Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stepanhruda.ElephantTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

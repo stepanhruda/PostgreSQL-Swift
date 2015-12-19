@@ -5,20 +5,20 @@ public final class Query: StringLiteralConvertible {
     public typealias ExtendedGraphemeClusterLiteralType = String
     public typealias UnicodeScalarLiteralType = String
 
-    public required init(string: String) {
+    public required init(_ string: String) {
         self.string = string
     }
 
     public convenience init(stringLiteral value: String) {
-        self.init(string: value)
+        self.init(value)
     }
 
     public convenience init(unicodeScalarLiteral value: String) {
-        self.init(string: value)
+        self.init(value)
     }
 
     public convenience init(extendedGraphemeClusterLiteral value: String) {
-        self.init(string: value)
+        self.init(value)
     }
 
     var resultFormat: QueryResultDataFormat {
@@ -31,6 +31,6 @@ public enum QueryError: ErrorType {
 }
 
 enum QueryResultDataFormat: Int32 {
-    case Text
-    case Binary
+    case Text = 0
+    case Binary = 1
 }
