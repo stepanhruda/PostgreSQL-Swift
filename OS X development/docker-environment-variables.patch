@@ -1,0 +1,33 @@
+diff --git a/OS X development/PostgreSQL.xcodeproj/xcshareddata/xcschemes/PostgreSQL.xcscheme b/OS X development/PostgreSQL.xcodeproj/xcshareddata/xcschemes/PostgreSQL.xcscheme
+index 0e30cb7..ea58074 100644
+--- a/OS X development/PostgreSQL.xcodeproj/xcshareddata/xcschemes/PostgreSQL.xcscheme	
++++ b/OS X development/PostgreSQL.xcodeproj/xcshareddata/xcschemes/PostgreSQL.xcscheme	
+@@ -70,6 +70,28 @@
+             ReferencedContainer = "container:PostgreSQL.xcodeproj">
+          </BuildableReference>
+       </MacroExpansion>
++      <EnvironmentVariables>
++         <EnvironmentVariable
++            key = "PGHOST"
++            value = "192.168.99.100"
++            isEnabled = "YES">
++         </EnvironmentVariable>
++         <EnvironmentVariable
++            key = "PGPORT"
++            value = "32768"
++            isEnabled = "YES">
++         </EnvironmentVariable>
++         <EnvironmentVariable
++            key = "PGUSER"
++            value = "postgres"
++            isEnabled = "YES">
++         </EnvironmentVariable>
++         <EnvironmentVariable
++            key = "PGDATABASE"
++            value = "spec"
++            isEnabled = "YES">
++         </EnvironmentVariable>
++      </EnvironmentVariables>
+       <AdditionalOptions>
+       </AdditionalOptions>
+    </LaunchAction>
