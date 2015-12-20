@@ -1,6 +1,6 @@
 import Quick
 import Nimble
-@testable import Elephant
+@testable import PostgreSQL
 
 class QueryResultSpec: QuickSpec {
 
