@@ -13,7 +13,7 @@ public class Connection {
     }
 
     public func execute(query: Query) throws -> QueryResult {
-        let resultPointer = PQexec(connectionPointer, query.string)
+        let resultPointer = PQexecParams(connectionPointer, query.string, 0, nil, nil, nil, nil, query.resultFormat.rawValue)
 
         let status = PQresultStatus(resultPointer)
 

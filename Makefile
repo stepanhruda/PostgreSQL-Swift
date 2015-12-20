@@ -13,7 +13,7 @@ else ifeq ($(UNAME),Darwin)
 test: development.setup lint development.test
 else ifndef CONTAINERIZED
 test: development.setup ## Run the unit tests in a Docker container against a Docker based database
-	$(info running unit test containertainers)
+	$(info running unit test containers)
 	@docker-compose build test
 	@docker-compose run test
 else
@@ -24,14 +24,14 @@ endif
 db.migrate: ## Migrate the database
 	$(info migrating the database)
 	sleep 5 ## give time for postgres to start up
-	psql $(DB_NAME) < Tests/db/migrate.sql
+	psql < Tests/db/migrate.sql
 
 db.seed: ## Seed the database
 	$(info seeding the database)
-	psql $(DB_NAME) < Tests/db/seed.sql
+	psql < Tests/db/seed.sql
 
 db.enter_console:
-	psql $(DB_NAME)
+	psql
 
 lint:
 
@@ -42,7 +42,7 @@ dependencies.travis:
 	psql -d postgres -c 'create database travis' &> /dev/null
 
 development.setup:
-	@git apply docker-environment-variables.patch
+	@git apply "OS X development/docker-environment-variables.patch" &> /dev/null || true
 	@docker-compose stop postgres &> /dev/null
 	@docker-compose rm -v --force postgres test &> /dev/null
 	@docker-compose up -d postgres
