@@ -1,5 +1,13 @@
 Connect to your PostgreSQL database. Run queries. All natively in Swift.
 
+### Installation
+
+Install via [swift-package-manager](https://github.com/apple/swift-package-manager) by adding a depdendency to your _Package.swift_. 
+
+```swift
+.Package(url: "https://github.com/stepanhruda/PostgreSQL-Swift.git", majorVersion: 0)
+```
+
 ### Usage
 
 #### Connection
