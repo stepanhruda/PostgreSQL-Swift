@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C0D420A41C13769B00A9EF85"
-               BuildableName = "PostgreSQL.xctest"
+               BuildableName = "PostgreSQLTests.xctest"
                BlueprintName = "PostgreSQLTests"
                ReferencedContainer = "container:PostgreSQL.xcodeproj">
             </BuildableReference>
