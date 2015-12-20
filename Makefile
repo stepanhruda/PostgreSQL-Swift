@@ -46,7 +46,7 @@ development.setup:
 	@docker-compose stop postgres &> /dev/null
 	@docker-compose rm -v --force postgres test &> /dev/null
 	@docker-compose up -d postgres
-	@docker-compose run migrate
+	@docker-compose build migrate && docker-compose run migrate
 
 development.test:
 	cd "OS X development" && xctool -workspace PostgreSQL.xcworkspace -scheme PostgreSQL test
