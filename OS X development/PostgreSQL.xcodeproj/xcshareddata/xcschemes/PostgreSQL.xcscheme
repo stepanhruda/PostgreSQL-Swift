@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C0D4209A1C13769B00A9EF85"
-               BuildableName = "Elephant.framework"
-               BlueprintName = "Elephant"
-               ReferencedContainer = "container:Elephant.xcodeproj">
+               BuildableName = "PostgreSQL.framework"
+               BlueprintName = "PostgreSQL"
+               ReferencedContainer = "container:PostgreSQL.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C0D420A41C13769B00A9EF85"
-               BuildableName = "ElephantTests.xctest"
-               BlueprintName = "ElephantTests"
-               ReferencedContainer = "container:Elephant.xcodeproj">
+               BuildableName = "PostgreSQLTests.xctest"
+               BlueprintName = "PostgreSQLTests"
+               ReferencedContainer = "container:PostgreSQL.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C0D4209A1C13769B00A9EF85"
-            BuildableName = "Elephant.framework"
-            BlueprintName = "Elephant"
-            ReferencedContainer = "container:Elephant.xcodeproj">
+            BuildableName = "PostgreSQL.framework"
+            BlueprintName = "PostgreSQL"
+            ReferencedContainer = "container:PostgreSQL.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -65,9 +65,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C0D4209A1C13769B00A9EF85"
-            BuildableName = "Elephant.framework"
-            BlueprintName = "Elephant"
-            ReferencedContainer = "container:Elephant.xcodeproj">
+            BuildableName = "PostgreSQL.framework"
+            BlueprintName = "PostgreSQL"
+            ReferencedContainer = "container:PostgreSQL.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -83,9 +83,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C0D4209A1C13769B00A9EF85"
-            BuildableName = "Elephant.framework"
-            BlueprintName = "Elephant"
-            ReferencedContainer = "container:Elephant.xcodeproj">
+            BuildableName = "PostgreSQL.framework"
+            BlueprintName = "PostgreSQL"
+            ReferencedContainer = "container:PostgreSQL.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

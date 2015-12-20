@@ -1,1 +1,1 @@
-CREATE DATABASE elephant;
+CREATE DATABASE spec;

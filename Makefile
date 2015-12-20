@@ -1,4 +1,4 @@
-TARGET=elephant
+TARGET=PostgreSQL
 UNAME := $(shell uname)
 .PHONY: test db.migrate db.seed db.schema
 
@@ -49,4 +49,4 @@ development.setup:
 	@docker-compose run migrate
 
 development.test:
-	cd "OS X development" && xctool -workspace Elephant.xcworkspace -scheme Elephant test
+	cd "OS X development" && xctool -workspace PostgreSQL.xcworkspace -scheme PostgreSQL test

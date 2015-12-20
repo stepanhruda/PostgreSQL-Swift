@@ -6,7 +6,7 @@ test:
     - PGUSER=postgres
     - PGPORT=5432
     - CONTAINERIZED=true
-    - PGDATABASE=elephant
+    - PGDATABASE=spec
   links:
     - postgres
 

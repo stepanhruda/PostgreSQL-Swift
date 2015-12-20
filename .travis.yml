@@ -13,4 +13,4 @@ script:
   - make test
 
 env:
-  - PGHOST=localhost PGUSER=travis PGPORT=5432 DBNAME=elephant
+  - PGHOST=localhost PGUSER=travis PGPORT=5432 DBNAME=spec
