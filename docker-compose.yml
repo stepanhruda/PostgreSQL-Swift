@@ -23,6 +23,6 @@ migrate:
     - PGUSER=postgres
     - PGPORT=5432
     - CONTAINERIZED=true
-    - PGDATABASE=spec
+    - PGDATABASE=postgres
   links:
     - postgres
