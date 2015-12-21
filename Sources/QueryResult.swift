@@ -92,7 +92,7 @@ public final class QueryResult {
     }
 }
 
-enum ColumnType: UInt32 {
+public enum ColumnType: UInt32 {
     case Boolean = 16
     case Int64 = 20
     case Int16 = 21

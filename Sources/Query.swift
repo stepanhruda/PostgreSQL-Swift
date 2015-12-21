@@ -21,8 +21,14 @@ public final class Query: StringLiteralConvertible {
         self.init(value)
     }
 
-    var resultFormat: QueryResultDataFormat {
+    var resultFormat: QueryDataFormat {
         return .Binary
+    }
+}
+
+extension Query: CustomDebugStringConvertible {
+    public var debugDescription: String {
+        return string
     }
 }
 
@@ -30,7 +36,7 @@ public enum QueryError: ErrorType {
     case InvalidQuery(errorMessage: String)
 }
 
-enum QueryResultDataFormat: Int32 {
+enum QueryDataFormat: Int32 {
     case Text = 0
     case Binary = 1
 }
