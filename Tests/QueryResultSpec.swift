@@ -22,8 +22,6 @@ class QueryResultSpec: QuickSpec {
                     }
                 } catch { connectionErrorMessage = "Unknown error" }
 
-                _ = try? connection.execute("DROP TABLE IF EXISTS spec;")
-
                 let createDatabase =
                 "CREATE TABLE spec (" +
                     "int16_column int2," +
