@@ -12,8 +12,29 @@ public class Connection {
         PQfinish(connectionPointer)
     }
 
-    public func execute(query: Query) throws -> QueryResult {
-        let resultPointer = PQexecParams(connectionPointer, query.string, 0, nil, nil, nil, nil, query.resultFormat.rawValue)
+    /// Executes a passed in query. First parameter is referred to as `$1` in the query.
+    public func execute(query: Query, parameters: [Parameter] = []) throws -> QueryResult {
+        let values = UnsafeMutablePointer<UnsafePointer<Int8>>.alloc(parameters.count)
+
+        defer {
+            values.destroy()
+            values.dealloc(parameters.count)
+        }
+
+        var temps = [Array<UInt8>]()
+        for (i, value) in parameters.enumerate() {
+            temps.append(Array<UInt8>(value.asString.utf8) + [0])
+            values[i] = UnsafePointer<Int8>(temps.last!)
+        }
+
+        let resultPointer = PQexecParams(connectionPointer,
+                                         query.string,
+                                         Int32(parameters.count),
+                                         nil,
+                                         values,
+                                         nil,
+                                         nil,
+                                         query.resultFormat.rawValue)
 
         let status = PQresultStatus(resultPointer)
 
