@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C08839C51C29A28B00BCD73E /* Parameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08839C41C29A28B00BCD73E /* Parameter.swift */; };
 		C0D420A61C13769B00A9EF85 /* PostgreSQL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0D4209B1C13769B00A9EF85 /* PostgreSQL.framework */; };
 		C0D4210A1C138C5B00A9EF85 /* libpq.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0D421091C138C5B00A9EF85 /* libpq.framework */; };
 		C0F648971C25F49900A7ABDE /* Byteswap.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F648901C25F49900A7ABDE /* Byteswap.swift */; };
@@ -37,6 +38,7 @@
 		17E9AC86EF1FDB033AC8C828 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		707CBAEE41A9F264E256E4CA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		AD1168C2B49409CAE9F17829 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		C08839C41C29A28B00BCD73E /* Parameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parameter.swift; sourceTree = "<group>"; };
 		C0D4209B1C13769B00A9EF85 /* PostgreSQL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PostgreSQL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0D420A51C13769B00A9EF85 /* PostgreSQLTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PostgreSQLTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0D421091C138C5B00A9EF85 /* libpq.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = libpq.framework; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				C0F648941C25F49900A7ABDE /* Connection.swift */,
 				C0F648951C25F49900A7ABDE /* ConnectionParameters.swift */,
 				C0F648961C25F49900A7ABDE /* Database.swift */,
+				C08839C41C29A28B00BCD73E /* Parameter.swift */,
 				C0F648911C25F49900A7ABDE /* Query.swift */,
 				C0F648921C25F49900A7ABDE /* QueryResult.swift */,
 				C0F648931C25F49900A7ABDE /* QueryResultRow.swift */,
@@ -312,6 +315,7 @@
 				C0F6489A1C25F49900A7ABDE /* QueryResultRow.swift in Sources */,
 				C0F6489C1C25F49900A7ABDE /* ConnectionParameters.swift in Sources */,
 				C0F648991C25F49900A7ABDE /* QueryResult.swift in Sources */,
+				C08839C51C29A28B00BCD73E /* Parameter.swift in Sources */,
 				C0F6489B1C25F49900A7ABDE /* Connection.swift in Sources */,
 				C0F648981C25F49900A7ABDE /* Query.swift in Sources */,
 				C0F6489D1C25F49900A7ABDE /* Database.swift in Sources */,
