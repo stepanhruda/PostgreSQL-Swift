@@ -12,6 +12,7 @@ public class Connection {
         PQfinish(connectionPointer)
     }
 
+    /// Executes a passed in query. First parameter is referred to as `$1` in the query.
     public func execute(query: Query, parameters: [Parameter] = []) throws -> QueryResult {
         let values = UnsafeMutablePointer<UnsafePointer<Int8>>.alloc(parameters.count)
 
