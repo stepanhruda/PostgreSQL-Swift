@@ -7,18 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C0476B481C2C494B004EFFD6 /* ColumnType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0476B471C2C494B004EFFD6 /* ColumnType.swift */; };
 		C08839C51C29A28B00BCD73E /* Parameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08839C41C29A28B00BCD73E /* Parameter.swift */; };
 		C0D420A61C13769B00A9EF85 /* PostgreSQL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0D4209B1C13769B00A9EF85 /* PostgreSQL.framework */; };
 		C0D4210A1C138C5B00A9EF85 /* libpq.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0D421091C138C5B00A9EF85 /* libpq.framework */; };
 		C0F648971C25F49900A7ABDE /* Byteswap.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F648901C25F49900A7ABDE /* Byteswap.swift */; };
-		C0F648981C25F49900A7ABDE /* Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F648911C25F49900A7ABDE /* Query.swift */; };
 		C0F648991C25F49900A7ABDE /* QueryResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F648921C25F49900A7ABDE /* QueryResult.swift */; };
 		C0F6489A1C25F49900A7ABDE /* QueryResultRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F648931C25F49900A7ABDE /* QueryResultRow.swift */; };
-		C0F6489B1C25F49900A7ABDE /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F648941C25F49900A7ABDE /* Connection.swift */; };
+		C0F6489B1C25F49900A7ABDE /* OpenConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F648941C25F49900A7ABDE /* OpenConnection.swift */; };
 		C0F6489C1C25F49900A7ABDE /* ConnectionParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F648951C25F49900A7ABDE /* ConnectionParameters.swift */; };
 		C0F6489D1C25F49900A7ABDE /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F648961C25F49900A7ABDE /* Database.swift */; };
 		C0F648AD1C25F52500A7ABDE /* PostgreSQL.h in Headers */ = {isa = PBXBuildFile; fileRef = C0F648AA1C25F52500A7ABDE /* PostgreSQL.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C0F648AF1C25F57700A7ABDE /* ConnectionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F648A21C25F4FF00A7ABDE /* ConnectionSpec.swift */; };
+		C0F648AF1C25F57700A7ABDE /* OpenConnectionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F648A21C25F4FF00A7ABDE /* OpenConnectionSpec.swift */; };
 		C0F648B01C25F57700A7ABDE /* QueryResultSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F648A31C25F4FF00A7ABDE /* QueryResultSpec.swift */; };
 		C0F648B11C25F57700A7ABDE /* DatabaseSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F648A41C25F4FF00A7ABDE /* DatabaseSpec.swift */; };
 		D170C83602BFF353FC029ED5 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17E9AC86EF1FDB033AC8C828 /* Pods.framework */; };
@@ -38,18 +38,18 @@
 		17E9AC86EF1FDB033AC8C828 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		707CBAEE41A9F264E256E4CA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		AD1168C2B49409CAE9F17829 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		C0476B471C2C494B004EFFD6 /* ColumnType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColumnType.swift; sourceTree = "<group>"; };
 		C08839C41C29A28B00BCD73E /* Parameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parameter.swift; sourceTree = "<group>"; };
 		C0D4209B1C13769B00A9EF85 /* PostgreSQL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PostgreSQL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0D420A51C13769B00A9EF85 /* PostgreSQLTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PostgreSQLTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0D421091C138C5B00A9EF85 /* libpq.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = libpq.framework; sourceTree = "<group>"; };
 		C0F648901C25F49900A7ABDE /* Byteswap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Byteswap.swift; sourceTree = "<group>"; };
-		C0F648911C25F49900A7ABDE /* Query.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Query.swift; sourceTree = "<group>"; };
 		C0F648921C25F49900A7ABDE /* QueryResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryResult.swift; sourceTree = "<group>"; };
 		C0F648931C25F49900A7ABDE /* QueryResultRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryResultRow.swift; sourceTree = "<group>"; };
-		C0F648941C25F49900A7ABDE /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
+		C0F648941C25F49900A7ABDE /* OpenConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenConnection.swift; sourceTree = "<group>"; };
 		C0F648951C25F49900A7ABDE /* ConnectionParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionParameters.swift; sourceTree = "<group>"; };
 		C0F648961C25F49900A7ABDE /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
-		C0F648A21C25F4FF00A7ABDE /* ConnectionSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionSpec.swift; sourceTree = "<group>"; };
+		C0F648A21C25F4FF00A7ABDE /* OpenConnectionSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenConnectionSpec.swift; sourceTree = "<group>"; };
 		C0F648A31C25F4FF00A7ABDE /* QueryResultSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryResultSpec.swift; sourceTree = "<group>"; };
 		C0F648A41C25F4FF00A7ABDE /* DatabaseSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseSpec.swift; sourceTree = "<group>"; };
 		C0F648A91C25F52500A7ABDE /* PostgreSQL Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "PostgreSQL Info.plist"; sourceTree = "<group>"; };
@@ -112,11 +112,11 @@
 			isa = PBXGroup;
 			children = (
 				C0F648901C25F49900A7ABDE /* Byteswap.swift */,
-				C0F648941C25F49900A7ABDE /* Connection.swift */,
 				C0F648951C25F49900A7ABDE /* ConnectionParameters.swift */,
+				C0476B471C2C494B004EFFD6 /* ColumnType.swift */,
 				C0F648961C25F49900A7ABDE /* Database.swift */,
+				C0F648941C25F49900A7ABDE /* OpenConnection.swift */,
 				C08839C41C29A28B00BCD73E /* Parameter.swift */,
-				C0F648911C25F49900A7ABDE /* Query.swift */,
 				C0F648921C25F49900A7ABDE /* QueryResult.swift */,
 				C0F648931C25F49900A7ABDE /* QueryResultRow.swift */,
 			);
@@ -127,9 +127,9 @@
 		C0D420A91C13769B00A9EF85 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				C0F648A21C25F4FF00A7ABDE /* ConnectionSpec.swift */,
-				C0F648A31C25F4FF00A7ABDE /* QueryResultSpec.swift */,
 				C0F648A41C25F4FF00A7ABDE /* DatabaseSpec.swift */,
+				C0F648A31C25F4FF00A7ABDE /* QueryResultSpec.swift */,
+				C0F648A21C25F4FF00A7ABDE /* OpenConnectionSpec.swift */,
 			);
 			name = Tests;
 			path = ../Tests;
@@ -315,9 +315,9 @@
 				C0F6489A1C25F49900A7ABDE /* QueryResultRow.swift in Sources */,
 				C0F6489C1C25F49900A7ABDE /* ConnectionParameters.swift in Sources */,
 				C0F648991C25F49900A7ABDE /* QueryResult.swift in Sources */,
+				C0476B481C2C494B004EFFD6 /* ColumnType.swift in Sources */,
 				C08839C51C29A28B00BCD73E /* Parameter.swift in Sources */,
-				C0F6489B1C25F49900A7ABDE /* Connection.swift in Sources */,
-				C0F648981C25F49900A7ABDE /* Query.swift in Sources */,
+				C0F6489B1C25F49900A7ABDE /* OpenConnection.swift in Sources */,
 				C0F6489D1C25F49900A7ABDE /* Database.swift in Sources */,
 				C0F648971C25F49900A7ABDE /* Byteswap.swift in Sources */,
 			);
@@ -329,7 +329,7 @@
 			files = (
 				C0F648B11C25F57700A7ABDE /* DatabaseSpec.swift in Sources */,
 				C0F648B01C25F57700A7ABDE /* QueryResultSpec.swift in Sources */,
-				C0F648AF1C25F57700A7ABDE /* ConnectionSpec.swift in Sources */,
+				C0F648AF1C25F57700A7ABDE /* OpenConnectionSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

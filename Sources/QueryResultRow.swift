@@ -1,3 +1,6 @@
+/// A single row in a query table.
+///
+/// This class currently depends on the original `QueryResult` still being available.
 public struct QueryResultRow {
     public let columnValues: [Any?]
     unowned let queryResult: QueryResult

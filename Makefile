@@ -49,4 +49,5 @@ development.setup:
 	@docker-compose build migrate && docker-compose run migrate
 
 development.test:
-	cd "OS X development" && xctool -workspace PostgreSQL.xcworkspace -scheme PostgreSQL test
+	swift build
+	# cd "OS X development" && xctool -workspace PostgreSQL.xcworkspace -scheme PostgreSQL test

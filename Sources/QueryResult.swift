@@ -1,6 +1,7 @@
 import libpq
 
-/// Results are readonly operations and therefore threadsafe.
+/// Results are lazily evaluated, i.e. you cannot close the connection used the execute the query,
+/// and start asking questions you haven't previously asked.
 public final class QueryResult {
     let resultPointer: COpaquePointer
 
@@ -12,25 +13,31 @@ public final class QueryResult {
         PQclear(resultPointer)
     }
 
-    public lazy var columnIndexesForNames: [String: Int] = {
-        var columnIndexesForNames = [String: Int]()
+    /// All of the rows in the query table.
+    public lazy var rows: [QueryResultRow] = {
+        var rows = [QueryResultRow]()
+        rows.reserveCapacity(Int(self.numberOfRows))
 
-        for columnNumber in 0..<self.numberOfColumns {
-            let name = String.fromCString(PQfname(self.resultPointer, columnNumber))!
-            columnIndexesForNames[name] = Int(columnNumber)
+        for rowIndex in 0..<self.numberOfRows {
+            rows.append(self.readResultRowAtIndex(rowIndex))
         }
 
-        return columnIndexesForNames
+        return rows
     }()
 
+    /// Number of rows in the resulting table.
     public lazy var numberOfRows: Int32 = {
         return PQntuples(self.resultPointer)
     }()
 
+    /// Number of columns in the resulting table.
     public lazy var numberOfColumns: Int32 = {
         return PQnfields(self.resultPointer)
     }()
 
+    /// Types for columns in the resulting table, indexed by the column number.
+    ///
+    /// If the column type isn't currently supported, `nil` is returned.
     lazy var typesForColumnIndexes: [ColumnType?] = {
         var typesForColumns = [ColumnType?]()
         typesForColumns.reserveCapacity(Int(self.numberOfColumns))
@@ -43,15 +50,16 @@ public final class QueryResult {
         return typesForColumns
     }()
 
-    public lazy var rows: [QueryResultRow] = {
-        var rows = [QueryResultRow]()
-        rows.reserveCapacity(Int(self.numberOfRows))
+    /// Look up a column index based on a column name.
+    public lazy var columnIndexesForNames: [String: Int] = {
+        var columnIndexesForNames = [String: Int]()
 
-        for rowIndex in 0..<self.numberOfRows {
-            rows.append(self.readResultRowAtIndex(rowIndex))
+        for columnNumber in 0..<self.numberOfColumns {
+            let name = String.fromCString(PQfname(self.resultPointer, columnNumber))!
+            columnIndexesForNames[name] = Int(columnNumber)
         }
 
-        return rows
+        return columnIndexesForNames
     }()
 
     private func readResultRowAtIndex(rowIndex: Int32) -> QueryResultRow {
@@ -90,14 +98,4 @@ public final class QueryResult {
     private func byteArrayForPointer(start: UnsafePointer<UInt8>, length: Int) -> [UInt8] {
         return Array(UnsafeBufferPointer(start: start, count: length))
     }
-}
-
-public enum ColumnType: UInt32 {
-    case Boolean = 16
-    case Int64 = 20
-    case Int16 = 21
-    case Int32 = 23
-    case Text = 25
-    case SingleFloat = 700
-    case DoubleFloat = 701
 }

@@ -1,17 +1,15 @@
 import PackageDescription
 
 #if os(Linux)
-let package = Package(
-  name: "PostgreSQL",
-  dependencies: [
-    .Package(url: "https://github.com/stepanhruda/libpq.git", majorVersion: 9)
-  ]
-)
+let libpqUrl = "https://github.com/stepanhruda/libpq.git"
 #else
+let libpqUrl = "https://github.com/stepanhruda/libpq-darwin.git"
+#endif
+
 let package = Package(
   name: "PostgreSQL",
   dependencies: [
-    .Package(url: "https://github.com/stepanhruda/libpq-darwin.git", majorVersion: 9)
+    .Package(url: libpqUrl, majorVersion: 9),
+    .Package(url: "https://github.com/Zewo/Venice.git", majorVersion: 0),
   ]
 )
-#endif

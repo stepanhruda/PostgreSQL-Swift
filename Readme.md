@@ -2,7 +2,7 @@ Connect to your PostgreSQL database. Run queries. All natively in Swift.
 
 ### Installation
 
-Install via [swift-package-manager](https://github.com/apple/swift-package-manager) by adding a depdendency to your _Package.swift_. 
+Install via [swift-package-manager](https://github.com/apple/swift-package-manager) by adding a depdendency to your _Package.swift_.
 
 ```swift
 .Package(url: "https://github.com/stepanhruda/PostgreSQL-Swift.git", majorVersion: 0)
@@ -12,26 +12,7 @@ Install via [swift-package-manager](https://github.com/apple/swift-package-manag
 
 #### Connection
 
-```swift
-let parameters = ConnectionParameters(
-  host: "123.123.123.123",
-  port: "9000",
-  databaseName: "banana_pantry",
-  login: "mehungry",
-  password: "reallyhungrygotnopatience"
-)
-let connection = try Database.connect(parameters: parameters)
-```
-
-#### Environment variables
-
-Your database configuration should not be in your application's source. Connecting to the database becomes as easy as:
-
-```swift
-let connection = try Database.connect()
-```
-
-Configuration is automatically loaded from default PostgreSQL environment variables.
+Your database configuration should not be in your application's source. Configuration is automatically loaded from default PostgreSQL environment variables.
 
 ```shell
 export PGHOST 123.123.123.123
@@ -41,10 +22,28 @@ export PGUSER mehungry
 export PGPASSWORD reallyhungrygotnopatience
 ```
 
+In your application, create a single global database object. It's thread-safe and manages a pool of connections to save resources.
+
+```swift
+let database = Database()
+```
+
+Now anytime you want to use the database:
+
+```swift
+let connection = database.open()
+
+defer {
+  database.close(connection)
+}
+
+// Use connection to execute queries
+```
+
 #### Queries and results
 
 ```swift
-let result = try connection.execute("SELECT color, is_tasty, length FROM bananas")
+let result = try connection.execute("SELECT color, is_tasty, length FROM bananas WHERE source = $1;", [palmTree])
 for row in result.rows {
   let color = row["color"] as! String
   let isTasty = row["is_tasty"] as! Bool
