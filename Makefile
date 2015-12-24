@@ -23,10 +23,13 @@ endif
 
 ifeq ($(UNAME),Darwin)
 dependencies:
+	brew tap zewo/tap
 	brew install libvenice
 else
 dependencies:
-	cd /tmp && git clone https://github.com/Zewo/libvenice.git && cd libvenice && make && make package && dpkg -i libvenice.deb && cd .. && rm -rf /tmp/libvenice && cd -
+	git clone https://github.com/Zewo/libvenice.git /tmp/libvenice/
+	cd /tmp/libvenice && make && make package && sudo dpkg -i libvenice.deb && cd -
+	rm -rf /tmp/libvenice
 endif
 
 db.migrate: ## Migrate the database
@@ -57,5 +60,4 @@ development.setup:
 	@docker-compose build migrate && docker-compose run migrate
 
 development.test:
-	swift build
-	# cd "OS X development" && xctool -workspace PostgreSQL.xcworkspace -scheme PostgreSQL test
+	cd "OS X development" && xctool -workspace PostgreSQL.xcworkspace -scheme PostgreSQL test

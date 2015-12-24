@@ -43,7 +43,7 @@ defer {
 #### Queries and results
 
 ```swift
-let result = try connection.execute("SELECT color, is_tasty, length FROM bananas WHERE source = $1;", [palmTree])
+let result = try connection.execute("SELECT color, is_tasty, length FROM bananas WHERE source = $1;", parameters: [palmTree])
 for row in result.rows {
   let color = row["color"] as! String
   let isTasty = row["is_tasty"] as! Bool
