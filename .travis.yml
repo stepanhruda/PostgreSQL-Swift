@@ -9,6 +9,9 @@ services:
   - docker
   - postgresql
 
+install:
+  - make dependencies
+
 script:
   - make test
 

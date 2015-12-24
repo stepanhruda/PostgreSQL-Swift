@@ -21,6 +21,14 @@ test: lint ## (with "CONTAINERIZED=true") Run the unit tests directly
 	swift build
 endif
 
+ifeq ($(UNAME),Darwin)
+dependencies:
+	brew install libvenice
+else
+dependencies:
+	cd /tmp && git clone https://github.com/Zewo/libvenice.git && cd libvenice && make && make package && dpkg -i libvenice.deb && cd .. && rm -rf /tmp/libvenice && cd -
+endif
+
 db.migrate: ## Migrate the database
 	$(info migrating the database)
 	sleep 5 ## give time for postgres to start up
