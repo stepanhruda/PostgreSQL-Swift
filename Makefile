@@ -25,11 +25,6 @@ ifeq ($(UNAME),Darwin)
 dependencies:
 	brew tap zewo/tap
 	brew install libvenice
-else
-dependencies:
-	git clone https://github.com/Zewo/libvenice.git /tmp/libvenice/
-	cd /tmp/libvenice && make && make package && sudo dpkg -i libvenice.deb && cd -
-	rm -rf /tmp/libvenice
 endif
 
 db.migrate: ## Migrate the database
