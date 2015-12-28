@@ -3,7 +3,7 @@ import Venice
 
 /// Used for connecting to the database.
 ///
-/// You usually only need a single instance of this class. 
+/// You usually only need a single instance of this class.
 /// Opening and closing connections is guaranteed to be thread-safe.
 public class Database {
 
@@ -11,14 +11,14 @@ public class Database {
     ///
     /// If no connection is currently available, this method will block until one can be returned.
     public func open() -> OpenConnection {
-        return connectionChannel.send()!
+        return connectionChannel.receive()!
     }
 
     /// Closes the connection.
     ///
     /// Call close() after you are done executing all queries to free up the connection for further use.
     public func close(connection: OpenConnection) {
-        connectionChannel.receive(connection)
+        connectionChannel.send(connection)
     }
 
     public let connectionParameters: ConnectionParameters
@@ -28,7 +28,7 @@ public class Database {
         self.connectionParameters = connectionParameters
 
         for _ in 0..<maxConnections {
-            connectionChannel.receive(try newConnection())
+            connectionChannel.send(try newConnection())
         }
     }
 
