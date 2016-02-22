@@ -2,7 +2,7 @@ import Quick
 import Nimble
 @testable import PostgreSQL
 
-class ConnectionSpec: QuickSpec {
+class OpenConnectionSpec: QuickSpec {
 
     override func spec() {
 
